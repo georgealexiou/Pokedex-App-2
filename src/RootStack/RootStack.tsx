@@ -7,8 +7,9 @@ import { GenerationsScreen } from '../Features/GenerationsScreen/GenerationsScre
 import HomeScreen from '../Features/HomeScreen/HomeScreen';
 import { SearchScreen } from '../Features/SearchScreen/SearchScreen';
 import SettingsScreen from '../Features/SettingsScreen/SettingsScreen';
-import { styles } from './styles';
+import { useStyleSheet } from './styles';
 import { TabOption } from './components/TabOption';
+import { useTheme } from '../../themes/use-theme';
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -36,6 +37,8 @@ export default function RootStack() {
 }
 
 function Main() {
+  const theme = useTheme();
+  const styles = useStyleSheet(theme);
   return (
     <Tab.Navigator
       screenOptions={{
@@ -63,6 +66,12 @@ function Main() {
         component={SettingsScreen}
         options={{
           headerShown: true,
+          headerStyle: {
+            backgroundColor: theme.primaryBackgroundColor,
+          },
+          headerTitleStyle: {
+            color: theme.primaryTextColor,
+          },
           tabBarIcon: ({ focused }) => <TabOption focused={focused} icon="gear" />,
         }}
       />

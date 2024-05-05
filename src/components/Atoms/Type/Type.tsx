@@ -1,6 +1,6 @@
 import { View, Text } from 'react-native';
-import { styles } from './styles';
-import { theme } from '../../../../themes/theme';
+import { useStyleSheet } from './styles';
+import { theme as oldTheme } from '../../../../themes/theme';
 import { PokemonTypes } from '../../../global/types';
 import React from 'react';
 import {
@@ -23,6 +23,7 @@ import {
   SteelUnselected,
   WaterUnselected,
 } from '../../../assets/svgs';
+import { useTheme } from '../../../../themes/use-theme';
 
 type TypeProps = {
   type?: PokemonTypes;
@@ -30,6 +31,8 @@ type TypeProps = {
 };
 
 export const Type: React.FC<TypeProps> = ({ type, small = false }) => {
+  const theme = useTheme();
+  const styles = useStyleSheet(theme);
   if (!type) return <></>;
   const TypeIcon = () => {
     switch (type) {
@@ -78,7 +81,7 @@ export const Type: React.FC<TypeProps> = ({ type, small = false }) => {
         <View
           style={{
             ...styles.smallTypeBox,
-            backgroundColor: theme.typePalette.get(type),
+            backgroundColor: oldTheme.typePalette.get(type),
           }}>
           <Text style={styles.smallText}>{type}</Text>
         </View>
@@ -88,7 +91,7 @@ export const Type: React.FC<TypeProps> = ({ type, small = false }) => {
             ...styles.typeBox,
             flexDirection: 'row',
             justifyContent: 'flex-start',
-            backgroundColor: theme.typePalette.get(type),
+            backgroundColor: oldTheme.typePalette.get(type),
           }}>
           <TypeIcon />
           <Text style={styles.text}>{type}</Text>

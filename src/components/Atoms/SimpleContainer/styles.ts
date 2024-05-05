@@ -1,15 +1,18 @@
 import { StyleSheet } from 'react-native';
-import { theme } from '../../../../themes/theme';
+import { Theme } from '../../../../themes';
 
-export const styles = StyleSheet.create({
-  container: {
-    borderRadius: 12,
-    shadowColor: 'black',
-    shadowRadius: 8,
-    shadowOpacity: 0.2,
-    shadowOffset: { width: -5, height: 5 },
-  },
-  containerNoShadow: {
-    borderRadius: 12,
-  },
-});
+export const useStyleSheet = (theme: Theme) =>
+  StyleSheet.create({
+    container: {
+      borderRadius: 12,
+      backgroundColor: theme.primaryBackgroundColor,
+      shadowColor: theme.primaryShadowColor,
+      elevation: 3,
+      shadowRadius: 8,
+      shadowOpacity: 0.2,
+      shadowOffset: { width: -5, height: 5 },
+    },
+    containerNoShadow: {
+      borderRadius: 12,
+    },
+  });

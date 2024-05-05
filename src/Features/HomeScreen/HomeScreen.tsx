@@ -8,6 +8,7 @@ import { PokemonList } from '../../components/Organisms/PokemonList/PokemonList'
 import { textStyle } from '../../../themes/textStyle';
 import { FeaturedPokemon } from './FeaturedPokemon/FeaturedPokemon';
 import { styles } from './styles';
+import { useTheme } from '../../../themes/use-theme';
 
 const HomeScreen = ({ navigation }: any) => {
   const [modalVisible, setModalVisible] = useState(false);
@@ -18,14 +19,18 @@ const HomeScreen = ({ navigation }: any) => {
     setFeaturedId(Math.floor(Math.random() * 1008));
   }, []);
 
+  const theme = useTheme();
   return (
     <View
       style={{
-        backgroundColor: 'white',
+        backgroundColor: theme.primaryBackgroundColor,
         paddingTop: 60,
+        flex: 1,
       }}>
       <View style={{ paddingHorizontal: 16 }}>
-        <Text style={{ ...textStyle.h1, textAlign: 'left', width: '100%' }}>Welcome to your Pokedex!</Text>
+        <Text style={{ ...textStyle.h1, textAlign: 'left', width: '100%', color: theme.primaryTextColor }}>
+          Welcome to your Pokedex!
+        </Text>
         <Spacer.Column numberOfSpaces={4} />
         <FeaturedPokemon
           id={featuredId as number}
@@ -40,19 +45,19 @@ const HomeScreen = ({ navigation }: any) => {
             style={styles.button}
             onPress={() => navigation.navigate('GenerationsScreen', { screen: 'Settings' })}>
             <View style={{ alignItems: 'center', justifyContent: 'center', flex: 1 }}>
-              <Text style={textStyle.h2}>Generations</Text>
+              <Text style={{ ...textStyle.h2, color: theme.primaryTextColor }}>Generations</Text>
             </View>
           </SimplePressable>
           <Spacer.Flex />
           <SimplePressable style={styles.button}>
             <View style={{ alignItems: 'center', justifyContent: 'center', flex: 1 }}>
-              <Text style={textStyle.h2}>Favourites</Text>
+              <Text style={{ ...textStyle.h2, color: theme.primaryTextColor }}>Favourites</Text>
             </View>
           </SimplePressable>
         </View>
         <View>
           <Spacer.Column numberOfSpaces={6} />
-          <Text style={textStyle.h1}>Favourites</Text>
+          <Text style={{ ...textStyle.h1, color: theme.primaryTextColor }}>Favourites</Text>
           <Spacer.Column numberOfSpaces={1} />
         </View>
       </View>
@@ -65,7 +70,7 @@ const HomeScreen = ({ navigation }: any) => {
         }}
       />
       <View style={{ position: 'absolute', zIndex: -1, height: '100%', justifyContent: 'flex-end', right: -170 }}>
-        <Pokeball />
+        <Pokeball color={theme.contrastIconColor} />
       </View>
       <PokemonDetailsModal visible={modalVisible} setModalVisible={setModalVisible} pokemonId={id} />
     </View>

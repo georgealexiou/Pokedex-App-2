@@ -1,8 +1,9 @@
 import { View } from 'react-native';
-import { styles } from './styles';
+import { useStyleSheet } from './styles';
 import { ReactNode } from 'react';
 import { theme } from '../../../../themes/theme';
 import React from 'react';
+import { useTheme } from '../../../../themes/use-theme';
 
 type TypeProps = {
   children: ReactNode | ReactNode[] | undefined;
@@ -19,12 +20,14 @@ export const SimpleContainer: React.FC<TypeProps> = ({
   style,
   backgroundColor = theme.palette.white,
   shadow = true,
-}) => (
-  <>
-    {shadow ? (
-      <View style={{ ...styles.container, backgroundColor: backgroundColor, ...style }}>{children}</View>
-    ) : (
-      <View style={{ ...styles.containerNoShadow, backgroundColor: backgroundColor, ...style }}>{children}</View>
-    )}
-  </>
-);
+}) => {
+  const theme = useTheme();
+  const styles = useStyleSheet(theme);
+  return (
+    <>
+      <View style={{ ...(shadow ? styles.container : styles.containerNoShadow), backgroundColor, ...style }}>
+        {children}
+      </View>
+    </>
+  );
+};

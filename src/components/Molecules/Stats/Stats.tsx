@@ -2,6 +2,8 @@ import { View, Text } from 'react-native';
 import { StatBar } from '../../Atoms/StatBar/StatBar';
 import { textStyle } from '../../../../themes/textStyle';
 import React from 'react';
+import { useStyleSheet } from './styles';
+import { useTheme } from '../../../../themes/use-theme';
 
 type StatsProps = {
   color?: string;
@@ -14,9 +16,11 @@ type StatsProps = {
 };
 
 export const Stats: React.FC<StatsProps> = ({ color, hp, attack, defence, spAttack, spDefence, speed }) => {
+  const theme = useTheme();
+  const styles = useStyleSheet(theme);
   return (
     <View style={{ paddingHorizontal: 20 }}>
-      <Text style={textStyle.h1}>Stats</Text>
+      <Text style={[textStyle.h1, styles.statsHeadingTextColor]}>Stats</Text>
       <View style={{ marginBottom: 6 }}>
         <StatBar statName={'HP'} stat={hp} color={color}></StatBar>
         <StatBar statName={'Attack'} stat={attack} color={color}></StatBar>

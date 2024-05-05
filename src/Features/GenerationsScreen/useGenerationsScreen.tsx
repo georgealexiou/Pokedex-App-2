@@ -5,16 +5,18 @@ import { SimplePressable } from '../../components/Atoms/SimplePressable/SimplePr
 import { textStyle } from '../../../themes/textStyle';
 import { Generation } from '../../global/types';
 import { styles } from './styles';
+import { Theme } from '../../../themes';
 
 type GenerationsScreenHookProps = {
   navigation: any;
+  theme: Theme;
 };
 
 type RenderItemProps = {
   item: Generation;
 };
 
-export const useGenerationsScreen = ({ navigation }: GenerationsScreenHookProps) => {
+export const useGenerationsScreen = ({ navigation, theme }: GenerationsScreenHookProps) => {
   const getStarterPokemon = ({ item }: { item: Generation }) => {
     const starterPokemon: number[] = [];
     if (item.id === 5) {
@@ -49,8 +51,8 @@ export const useGenerationsScreen = ({ navigation }: GenerationsScreenHookProps)
         <SimplePressable onPress={onPress({ item })} style={styles.simplePressable}>
           <View style={styles.insideContainer}>
             <View>
-              <Text style={textStyle.caption}>{`Generation ${item.id}`}</Text>
-              <Text style={textStyle.h1}>{item.region}</Text>
+              <Text style={{ ...textStyle.caption, color: theme.primaryTextColor }}>{`Generation ${item.id}`}</Text>
+              <Text style={{ ...textStyle.h1, color: theme.primaryTextColor }}>{item.region}</Text>
             </View>
             <View style={styles.imageContainer}>
               <PokemonImage id={starterPokemon[0]} style={styles.image} />

@@ -1,32 +1,32 @@
-import { Dimensions, StyleSheet } from "react-native";
-import { theme } from "../../../../themes/theme";
+import { StyleSheet } from 'react-native';
+import { theme as oldtheme } from '../../../../themes/theme';
+import { Theme } from '../../../../themes';
 
-const { width, height } = Dimensions.get("window");
-
-export const styles = StyleSheet.create({
-  textColor: {
-    color: "black",
-  },
-  boldTextColor: {
-    fontWeight: "bold",
-    color: "black",
-  },
-  statsTextLabel: {
-    color: "black",
-    fontWeight: "bold",
-    fontSize: 17,
-  },
-  statsTextNumber: {
-    color: "black",
-    fontSize: 17,
-  },
-  statsHeadingTextColor: {
-    color: "black",
-    fontWeight: "bold",
-    fontSize: 30,
-  },
-  border: {
-    borderColor: theme.palette.carbon,
-    borderTopWidth: 3,
-  },
-});
+export const useStyleSheet = (theme: Theme) =>
+  StyleSheet.create({
+    textColor: {
+      color: theme.primaryTextColor,
+    },
+    boldTextColor: {
+      fontWeight: 'bold',
+      color: theme.primaryTextColor,
+    },
+    statsTextLabel: {
+      color: theme.primaryTextColor,
+      fontWeight: 'bold',
+      fontSize: 17,
+    },
+    statsTextNumber: {
+      color: theme.primaryTextColor,
+      fontSize: 17,
+    },
+    statsHeadingTextColor: {
+      color: theme.primaryTextColor,
+      fontWeight: 'bold',
+      fontSize: 30,
+    },
+    border: {
+      borderColor: oldtheme.palette.carbon,
+      borderTopWidth: 3,
+    },
+  });

@@ -1,5 +1,4 @@
 import { StyleSheet } from 'react-native';
-import { theme } from '../../../../themes/theme';
 
 export const styles = StyleSheet.create({
   simpleContainer: { width: '100%', height: 220 },

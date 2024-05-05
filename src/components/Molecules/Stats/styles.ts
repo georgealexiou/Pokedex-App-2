@@ -1,21 +1,20 @@
-import { Dimensions, StyleSheet } from "react-native";
-import { theme } from "../../../../themes/theme";
+import { StyleSheet } from 'react-native';
+import { Theme } from '../../../../themes';
 
-const { width, height } = Dimensions.get("window");
-
-export const styles = StyleSheet.create({
-  statsTextColor: {
-    color: "black",
-    marginTop: 5.5,
-    fontWeight: "bold",
-  },
-  statsHeadingTextColor: {
-    color: "black",
-    marginTop: 5.5,
-    fontWeight: "bold",
-    fontSize: 30,
-  },
-  border: {
-    margin: 10,
-  },
-});
+export const useStyleSheet = (theme: Theme) =>
+  StyleSheet.create({
+    statsTextColor: {
+      color: theme.primaryTextColor,
+      marginTop: 5.5,
+      fontWeight: 'bold',
+    },
+    statsHeadingTextColor: {
+      color: theme.primaryTextColor,
+      marginTop: 5.5,
+      fontWeight: 'bold',
+      fontSize: 30,
+    },
+    border: {
+      margin: 10,
+    },
+  });
