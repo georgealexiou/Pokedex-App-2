@@ -5,7 +5,6 @@ export const styles = StyleSheet.create({
   tabBarOptionSelected: {
     justifyContent: 'center',
     alignItems: 'center',
-    top: 15,
     backgroundColor: '#444444',
     height: 30,
     width: 50,
@@ -14,7 +13,6 @@ export const styles = StyleSheet.create({
   tabBarOptionNotSelected: {
     justifyContent: 'center',
     alignItems: 'center',
-    top: 15,
     width: 50,
     height: 30,
     borderRadius: 100,
@@ -22,7 +20,6 @@ export const styles = StyleSheet.create({
 
   tabBarOptionSearch: {
     justifyContent: 'center',
-    top: 15,
     aspectRatio: 1,
     height: 60,
     alignItems: 'center',

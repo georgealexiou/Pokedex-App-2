@@ -3,10 +3,10 @@
   "version": "1.0.0",
   "main": "node_modules/expo/AppEntry.js",
   "scripts": {
-    "start": "expo start",
-    "android": "expo start --android",
-    "ios": "expo start --ios",
-    "web": "expo start --web",
+    "start": "set NODE_OPTIONS=--openssl-legacy-provider && expo start",
+    "android": "set NODE_OPTIONS=--openssl-legacy-provider && expo start --android",
+    "ios": "set NODE_OPTIONS=--openssl-legacy-provider && expo start --ios",
+    "web": "set NODE_OPTIONS=--openssl-legacy-provider && expo start --web",
     "find-deadcode": "ts-prune",
     "test": "jest"
   },
